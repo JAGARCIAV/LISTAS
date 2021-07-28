@@ -13,61 +13,7 @@ namespace LISTAS
     public partial class Form1 : Form
     {
         ListasDoblementeEnlazadas lde = new ListasDoblementeEnlazadas(); 
-        ListaSimplementeEnlazada lse = new ListaSimplementeEnlazada();
-
-
-        void MostrarLSE()
-        {
-            Nodo p;
-            listView1.Clear();
-            p = lse.tope;
-            while (p != null)
-            {
-                listView1.Items.Add(p.Info.ToString());
-                p = p.Enlace;
-            }
-        }
-
-        void MostrarLSE2()
-        {
-            Nodo2 p;
-            listView2.Clear();
-            p = lse.tope2;
-            while (p != null)
-            {
-                listView2.Items.Add(p.Info2.ToString());
-                p = p.Enlace2;
-            }
-        }
-
-        void MostrarLSE3()
-        {
-
-            Nodo p;
-            Nodo2 z;
-
-            listView3.Clear();
-
-            p = lse.tope;
-            z = lse.tope2;
-
-            while (p != null)
-            {
-
-                listView3.Items.Add(p.Info.ToString());
-
-                p = p.Enlace;
-            }
-
-            while (z != null)
-            {
-
-                listView3.Items.Add(z.Info2.ToString());
-
-                z = z.Enlace2;
-            }
-
-        }
+       
 
         void MostrarLDE()
         {
@@ -147,18 +93,18 @@ namespace LISTAS
 
         private void btnIsertar_Click(object sender, EventArgs e)
         {
-            lse.Insertar_1(Int32.Parse(txtElementos.Text));
+            lde.Insertar_1(Int32.Parse(txtElementos.Text));
 
-            MostrarLSE();
-            MostrarLSE3();
+            MostrarLDE();
+            MostrarLDE3();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lse.Insertar_2(Int32.Parse(txtElementos2.Text));
+            lde.Insertar_2(Int32.Parse(txtElementos2.Text));
 
-            MostrarLSE2();
-            MostrarLSE3();
+            MostrarLDE2();
+            MostrarLDE3();
         }
 
 

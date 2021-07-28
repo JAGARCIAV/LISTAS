@@ -50,7 +50,7 @@ namespace LISTAS
                 primero.EnlaceIzquierdo = null;
 
                 ultimo = primero;
-                //primero = ultimo;
+            
             }
             else
             {
@@ -62,7 +62,7 @@ namespace LISTAS
 
                 ultimo.EnlaceDerecho = p;
                 ultimo = p;
-                // p =ultimo;
+    
             }
 
         }
@@ -95,122 +95,5 @@ namespace LISTAS
             }
 
         }
-
-        public void eliminar(int x)
-        {
-            NodoDoble p, q, r;
-
-            if (vacia())
-            {
-                MessageBox.Show("Error, la lista esta vacia, no se puede eliminar");
-
-            }
-            else
-            {
-                p = primero;
-                while (p != null && p.Informacion != x)
-                    p = p.EnlaceDerecho;
-                if (p == null)
-                {
-                    MessageBox.Show("El elemento no se encuentra en la lista");
-                }
-                else
-                {
-                    if (p == primero)
-                    {
-                        if (primero.EnlaceDerecho != null)
-                        {
-                            primero = primero.EnlaceDerecho;
-                            primero.EnlaceIzquierdo = null;
-                        }
-                        else
-                        {
-                            primero = null;
-                        }
-                        p.EnlaceDerecho = null;
-                        p.EnlaceIzquierdo = null;
-                        p = null;
-                    }
-                    else
-                    {
-                        q = p.EnlaceDerecho;
-                        r = p.EnlaceIzquierdo;
-                        if (q != null)
-                        {
-                            r.EnlaceDerecho = q;
-                            q.EnlaceIzquierdo = r;
-                        }
-                        else
-                        {
-                            r.EnlaceDerecho = null;
-
-                        }
-                        p.EnlaceDerecho = null;
-                        p.EnlaceIzquierdo = null;
-                        p = null;
-                    }
-                }
-            }
-        }
-
-        public void insertar_ordenadamente_ascendentemente(int x)
-        {
-            NodoDoble p, q, r;
-
-            if (vacia())
-            {
-                primero = new NodoDoble();
-                primero.Informacion = x;
-                primero.EnlaceDerecho = null;
-                primero.EnlaceIzquierdo = null;
-
-            }
-            else
-            {
-                if (x < primero.Informacion)
-                {
-                    p = new NodoDoble();
-                    p.Informacion = x;
-
-                    p.EnlaceIzquierdo = null;
-                    p.EnlaceDerecho = primero;
-                    primero.EnlaceIzquierdo = p;
-                    primero = p;
-                }
-                else
-                {
-                    r = primero;
-                    q = primero.EnlaceDerecho;
-                    while (q != null && x > q.Informacion)
-                    {
-                        r = q;
-                        q = q.EnlaceDerecho;
-                    }
-                    if (q != null)
-                    {
-                        //izquierda
-                        p = new NodoDoble();
-                        p.Informacion = x;
-
-                        r.EnlaceDerecho = p;
-                        p.EnlaceIzquierdo = r;
-
-                        p.EnlaceDerecho = q;
-                        q.EnlaceIzquierdo = p;
-                    }
-                    else
-                    {
-                        //derech
-                        p = new NodoDoble();
-                        p.Informacion = x;
-
-                        p.EnlaceDerecho = null;
-                        p.EnlaceIzquierdo = r;
-                        r.EnlaceDerecho = p;
-                    }
-                }
-            }
-        }
-
     }
 }
